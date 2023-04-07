@@ -1,5 +1,6 @@
 import { OpenAIApi,Configuration} from "openai";
 import { NextResponse } from "next/server";
+import { MsgData } from "@/global";
 
 const apiConfirm = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
@@ -18,10 +19,12 @@ export async function POST(request: Request){
         })
     }
     try {
+        
         const res = await request.json();
+        console.log('backend response',res);
         const chatResponse = await openai.createChatCompletion({
             model:'gpt-3.5-turbo',
-            messages:res.msgs
+            messages:res.qna
         })
         // console.log('chatResponse',chatResponse);
         return NextResponse.json({
