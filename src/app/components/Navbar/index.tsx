@@ -6,7 +6,7 @@ interface Props{
 }
 const NavBar = ({links,className}:Props) => {
     return (
-        <nav className={className}>
+        <div className={className}>
             <ul className="flex">
                 {
                     links.map((e,i)=> {
@@ -20,7 +20,7 @@ const NavBar = ({links,className}:Props) => {
                     })
                 }
             </ul>
-        </nav>
+        </div>
     )
 }
 

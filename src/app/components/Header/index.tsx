@@ -5,22 +5,22 @@ import Link from "next/link"
 const Header = () => {
     const navLinks:LinksData[] = [
         {
-            text:'Challenge',
-            url:'/qna/challenge'
-        },
-        {
             text:'Practice',
             url:'/qna/practice'
-        }
+        },
+        {
+            text:'About',
+            url:'/about'
+        },
     ]
     return (
-        <header className="w-full flex justify-center">
-            <div className="flex bg-slate-50 justify-between max-w-screen-xl mt-2 mx-4 w-full p-3 shadow-md rounded-lg">
+        <header className="w-full flex justify-center bg-blue-400">
+            <nav className="w-full flex justify-between max-w-6xl px-6 py-2 md:py-4 md:px-12 lg:px-6 xl:px-0">
                 <Link href={'/'} className="font-bold">
-                    Language Coach
+                    AILanguageCoach
                 </Link>
                 <NavBar links={navLinks} />
-            </div>
+            </nav>
         </header>
     )
 }
