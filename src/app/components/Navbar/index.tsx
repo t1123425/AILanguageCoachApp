@@ -12,7 +12,7 @@ const NavBar = ({links,className}:Props) => {
                     links.map((e,i)=> {
                         return (
                             <li key={i}>
-                                <Link href={e.url} className="p-3 font-bold">
+                                <Link href={e.url} className="p-3 font-bold transition-colors hover:text-white">
                                     {e.text}
                                 </Link> 
                             </li>

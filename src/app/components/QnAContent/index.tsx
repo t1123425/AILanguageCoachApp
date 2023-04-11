@@ -2,22 +2,11 @@
 import { MsgData } from "@/global";
 import { useState,useEffect} from "react";
 import AnswerBlock from "./AnswerBlock";
-const QnABlock = ({role,content}:MsgData) => {
-    return (
-        <div className={'p-2 rounded-md my-2 text-white '+(role !== 'user'?'bg-blue-700':'bg-gray-500')}>
-            <p className="text-bold divide-y divide-dashed">
-                {
-                    role !== 'user'?'Question':'Your Answer'
-                }
-            </p>
-            <p className="m-0">
-                {content}
-            </p>
-        </div>
-    )
+import QnABlock from "./QnABlock";
+interface Props{
+    questionTemplate:string
 }
-
-const QnAcontent = () => {
+const QnAcontent = ({questionTemplate}:Props) => {
     const [qna,setQna] = useState<MsgData[]>([]);
     const [isLoad,setLoading] = useState(false);
     const [isUpdate,setUpdate] = useState(true);
@@ -52,16 +41,16 @@ const QnAcontent = () => {
     }
 
     const submitAnswer = (ans:string) => {
-        setQna(qna => [...qna,{role:'user',content:`this question answer is ${ans}, is correct?`}]);
+        setQna(qna => [...qna,{role:'user',content:ans}]);
         setUpdate(true);
     }
+
     useEffect(()=>{
         if(!qna.length){
-            if(process.env.QUESTION_TEMPLATE){
-                const QnATemplate = process.env.QUESTION_TEMPLATE;
-                setQna(qna => [...qna,{role:'system',content:QnATemplate}])
-            }
-            
+            // if(process.env.QUESTION_TEMPLATE){
+            //     const QnATemplate = process.env.QUESTION_TEMPLATE;
+            // } 
+            setQna(qna => [...qna,{role:'system',content:questionTemplate}])
         }else{
             if(isUpdate){
                 console.log('run qna');
@@ -71,8 +60,8 @@ const QnAcontent = () => {
         
     },[qna,isUpdate])
     return (
-        <div className="w-full relative">
-            <div className="overscroll-contain p-2">
+        <div className="grid grid-rows-3 grid-cols-1 w-full relative p-2" style={{height:'calc(100% - 92px)'}}>
+            <div className="overscroll-y-contain overflow-auto col-span-1 row-span-3">
                 {
                     qna.map((e,i)=>{
                         return (
@@ -84,8 +73,7 @@ const QnAcontent = () => {
                     isLoad && <p className="text-center my-3">Loading....</p>
                 }
             </div>
-            
-            <AnswerBlock isLoad={isLoad} submitAns={submitAnswer} />
+            <AnswerBlock isLoad={isLoad} submitAns={submitAnswer} className="col-span-1 row-end-end-1-1" />
         </div>
     )
 }
