@@ -11,7 +11,7 @@ const InfoBlock = ({rowDirect,imageSrc,title,content}:Props) => {
           <div className="w-1/2 text-center drop-shadow-lg">
               <Image src={imageSrc}  style={{maxWidth:256}} className="m-auto w-full"  alt="img" />
           </div>
-          <div className="">
+          <div className="text-center lg:text-left">
               <h3 className="text-2xl font-bold my-6">
                 {title}
               </h3>

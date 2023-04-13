@@ -11,8 +11,6 @@ const AnswerBlock = ({submitAns,isLoad,className}:Props) => {
     const [ansArray,setAnsArray] = useState<string[]>([]);
     const questionCount = 2;
     const sendAns = (e:string) => {
-        // const ansQuery = `this question i select (${e.toUpperCase()}) as answer, next!`
-        
         submitAns(e);
     }
     useEffect(() => {
@@ -21,7 +19,7 @@ const AnswerBlock = ({submitAns,isLoad,className}:Props) => {
             if(ansArray.length === questionCount){
                 let ansOrder = '';
                 ansArray.forEach((e,i) => {
-                    ansOrder += `Q${(i+1)}.${e}`
+                    ansOrder += `Q${(i+1)}.${e} `
                 })
                 ansQuery = `The answers of the previous questions are in order ${ansOrder}, 
                 are they all correct? If there are any wrong answer, please testify. Thank you.`
