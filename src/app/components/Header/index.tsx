@@ -6,10 +6,10 @@ import { faDumbbell } from "@fortawesome/free-solid-svg-icons"
 import { MenuBar } from "../Navbar/style"
 const Header = () => {
     const navLinks:LinksData[] = [
-        {
-            text:'Practice',
-            url:'/qna/practice'
-        },
+        // {
+        //     text:'Practice',
+        //     url:'/qna/practice'
+        // },
         {
             text:'About',
             url:'/about'

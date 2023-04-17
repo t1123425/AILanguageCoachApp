@@ -1,6 +1,6 @@
 import { OpenAIApi,Configuration} from "openai";
 import { NextResponse } from "next/server";
-import { MsgData } from "@/global";
+import { GPTData } from "@/global";
 
 const apiConfirm = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
@@ -21,10 +21,14 @@ export async function POST(request: Request){
     try {
         
         const res = await request.json();
-        console.log('backend response',res);
+        const qt = process.env.QUESTION_TEMPLATE?process.env.QUESTION_TEMPLATE:''
+        //  process.env.QUESTION_TEMPLATE?process.env.QUESTION_TEMPLATE:''
+        const initQuestion:GPTData = {role:'system',content:qt}
+        const qnaMsg = [initQuestion,...res.qna];
+        // console.log('backend response :',qnaMsg);
         const chatResponse = await openai.createChatCompletion({
             model:'gpt-3.5-turbo',
-            messages:res.qna
+            messages:qnaMsg
         })
         // console.log('chatResponse',chatResponse);
         return NextResponse.json({

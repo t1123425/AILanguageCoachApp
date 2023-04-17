@@ -2,31 +2,31 @@
 import { useState,useEffect} from "react"
 interface Props{
     submitAns:(ans:string)=> void,
-    isLoad:boolean,
+    isOkAnswer:boolean,
+    questionCount:number
     className?:string,
 }
 
-const AnswerBlock = ({submitAns,isLoad,className}:Props) => {
+const AnswerBlock = ({submitAns,isOkAnswer,className,questionCount}:Props) => {
     const selectOptions = ['A','B','C','D'];
     const [ansArray,setAnsArray] = useState<string[]>([]);
-    const questionCount = 2;
     const sendAns = (e:string) => {
         submitAns(e);
     }
+    const [isFinish,setFinish] = useState(false);
     useEffect(() => {
         if(ansArray.length > 0){
-            let ansQuery = `Please generate the No.${ansArray.length+1} question following the previous rules `
+            let ansQuery = `My Q${ansArray.length} answer is ${ansArray[ansArray.length - 1]}, Please generate the next question that following the previous rules.`
             if(ansArray.length === questionCount){
-                let ansOrder = '';
-                ansArray.forEach((e,i) => {
-                    ansOrder += `Q${(i+1)}.${e} `
-                })
-                ansQuery = `The answers of the previous questions are in order ${ansOrder}, 
-                are they all correct? If there are any wrong answer, please testify. Thank you.`
+                // let ansOrder = '';
+                // ansArray.forEach((e,i) => {
+                //     ansOrder += `Q${(i+1)}.${e} `
+                // })
+                setFinish(true);
+                ansQuery = `My Q${ansArray.length} answer is ${ansArray[ansArray.length - 1]} , Are the answers to the previous questions correct? Please testify if I am wrong.`
             }
             sendAns(ansQuery)
         }
-        console.log('ansArray:',ansArray)
     },[ansArray]);
     return (
         <div className={`w-full p-2 bg-zinc-600 rounded-lg  ${className}`}>
@@ -35,7 +35,7 @@ const AnswerBlock = ({submitAns,isLoad,className}:Props) => {
                 {
                     selectOptions.map((e,i)=>{
                         return (
-                            <button key={i} disabled={isLoad} onClick={()=>{setAnsArray(ansArray => [...ansArray,e])}} className="w-1/5 rounded-md p-2 text-white bg-blue-300 disabled:bg-gray-500">
+                            <button key={i} disabled={!isOkAnswer || isFinish} onClick={()=>{setAnsArray(ansArray => [...ansArray,e])}} className="w-1/5 rounded-md p-2 text-white bg-blue-300 disabled:bg-gray-500">
                                 {e}
                             </button>
                         )

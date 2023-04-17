@@ -1,17 +1,33 @@
 'use client';
-import { MsgData } from "@/global";
-import { useState,useEffect} from "react";
+import { GPTData } from "@/global";
+import { useState,useEffect,useRef} from "react";
 import AnswerBlock from "./AnswerBlock";
 import QnABlock from "./QnABlock";
+import { Alert, Spinner} from "flowbite-react";
 interface Props{
-    questionTemplate:string
+    questionTemplate?:string,
+    questionCounts:number
 }
-const QnAcontent = ({questionTemplate}:Props) => {
-    const [qna,setQna] = useState<MsgData[]>([]);
-    const [isLoad,setLoading] = useState(false);
-    const [isUpdate,setUpdate] = useState(true);
+interface QnaStatus{
+    isLoad:boolean,
+    isUpdate:boolean
+    isError:boolean
+}
+
+
+
+const QnAcontent = ({questionCounts}:Props) => {
+    const qnaRef = useRef<HTMLDivElement>(null);
+    const [errorMsg,setErrorMsg] = useState('');
+    const [qna,setQna] = useState<GPTData[]>([]);
+    const [qnaStatus,setStatus] = useState<QnaStatus>({
+        isLoad:false,
+        isUpdate:true,
+        isError:false
+    })
+
     const callQnaApi = async () => {
-        setLoading(true);
+        setStatus(qnaStatus => ({...qnaStatus,isLoad:true}))
         try{
             const response = await fetch('/api/lang_qna',{
                 method:'POST',
@@ -25,42 +41,47 @@ const QnAcontent = ({questionTemplate}:Props) => {
             if (response.status !== 200) {
                 throw res.error || new Error(`Request failed with status ${response.status}`);
             }
-            setLoading(false);
             console.log(res);
             const choicesData = res.data.choices[0];
-            const choicesMessage:MsgData = choicesData.message;
+            const choicesMessage:GPTData = choicesData.message;
             if(choicesData.finish_reason === 'stop'){
-                setUpdate(false)
+                setStatus({isError:false,isLoad:false,isUpdate:false})
             }
             setQna(qna => [...qna,choicesMessage]);
-        }catch(error){
-            setLoading(false);
-            setUpdate(false);
+        }catch(error:any){
             console.error(error);
+            if(error){
+                setErrorMsg(error?.message?.message)
+            }
+            setStatus(qnaStatus => ({...qnaStatus,isError:true,isUpdate:false}))
+            reUpdate(3000);
         }
     }
 
     const submitAnswer = (ans:string) => {
         setQna(qna => [...qna,{role:'user',content:ans}]);
-        setUpdate(true);
+        // setUpdate(true);
+        setStatus(qnaStatus => ({...qnaStatus,isUpdate:true}))
     }
-
+    const reUpdate = (delaySec:number) => {
+        setTimeout(()=>{
+            setStatus(qnaStatus => ({...qnaStatus,isUpdate:true}))
+            // setUpdate(true);
+        },delaySec);
+    }
     useEffect(()=>{
-        if(!qna.length){
-            // if(process.env.QUESTION_TEMPLATE){
-            //     const QnATemplate = process.env.QUESTION_TEMPLATE;
-            // } 
-            setQna(qna => [...qna,{role:'system',content:questionTemplate}])
-        }else{
-            if(isUpdate){
-                console.log('run qna');
-                callQnaApi()
-            }
+        if(qnaStatus.isUpdate){
+            callQnaApi()
+        }
+        if(qnaRef.current && !qnaStatus.isUpdate){
+            // console.log('run scroll');
+            qnaRef.current.scrollIntoView({behavior: 'smooth' });
         }
         
-    },[qna,isUpdate])
+        
+    },[qnaStatus.isUpdate])
     return (
-        <div className="grid grid-rows-3 grid-cols-1 w-full relative p-2" style={{height:'calc(100% - 92px)'}}>
+        <div className="grid grid-rows-3 grid-cols-1 w-full h-full relative p-2">
             <div className="overscroll-y-contain overflow-auto col-span-1 row-span-3">
                 {
                     qna.map((e,i)=>{
@@ -70,10 +91,14 @@ const QnAcontent = ({questionTemplate}:Props) => {
                     })
                 }
                 {
-                    isLoad && <p className="text-center my-3">Loading....</p>
+                    qnaStatus.isLoad && <p className="text-center my-3"><Spinner aria-label="Default status example" className="mr-2" />Loading....</p>
                 }
+                <div ref={qnaRef}></div>
             </div>
-            <AnswerBlock isLoad={isLoad} submitAns={submitAnswer} className="col-span-1 row-end-end-1-1" />
+            {
+                qnaStatus.isError && <Alert color="failure" rounded={true}><span className="font-bold mr-3">Error</span>{errorMsg}</Alert>
+            }
+            <AnswerBlock questionCount={questionCounts} isOkAnswer={!qnaStatus.isLoad && !qnaStatus.isError && !qnaStatus.isUpdate} submitAns={submitAnswer} className="col-span-1 row-end-end-1-1" />
         </div>
     )
 }

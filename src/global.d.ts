@@ -2,8 +2,10 @@ export interface LinksData{
     text:string,
     url:string
 }
-
-export interface MsgData{
+export interface QnaRequestData{
+    gptDatas:GPTData[]
+}
+export interface GPTData{
     /**
      * role: 
      * first submit role will be 'system'

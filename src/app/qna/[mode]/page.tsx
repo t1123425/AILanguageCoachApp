@@ -1,4 +1,5 @@
 import QnAContent from "@/app/components/QnAContent"
+import InfoModal from "@/app/components/InfoModal";
 export default function QnaPage({
     params,
     searchParams,
@@ -6,15 +7,16 @@ export default function QnaPage({
     params: { mode: string };
     searchParams: { [key: string]: string | string[] | undefined };
   }) {
-    let question = 'Hi my English teacher'
-    if(process.env.QUESTION_TEMPLATE){
-      question = process.env.QUESTION_TEMPLATE;
-    }
- 
+
     return (
         <section className="container mt-2 mx-auto h-screen bg-white">
             {/* <h1>This is {params.mode} page</h1> */}
-            <QnAContent questionTemplate={question}/>
+            <InfoModal title="welcome to AI Language Coach Demo">
+              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                Here we will show the use of chatGPT to generate 5 English fill-in-the-blank questions. 
+              </p>
+            </InfoModal>
+            <QnAContent questionCounts={5} />
         </section>
         
     )
