@@ -73,7 +73,7 @@ const QnAcontent = ({questionCounts}:Props) => {
         if(qnaStatus.isUpdate){
             callQnaApi()
         }
-        if(qnaRef.current && !qnaStatus.isUpdate){
+        if(qnaRef.current){
             // console.log('run scroll');
             qnaRef.current.scrollIntoView({behavior: 'smooth' });
         }

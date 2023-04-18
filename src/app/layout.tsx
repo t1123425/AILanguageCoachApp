@@ -14,14 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className='bg-white-500 h-screen'>
         <StyledComponentsRegistry>
-          <Header />
-          <main className='w-full'>
+            <Header />
             {children}
-          </main>
-          <Footer />
         </StyledComponentsRegistry>
+        <Footer />
       </body>
     </html>
   )

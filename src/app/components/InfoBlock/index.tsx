@@ -1,5 +1,6 @@
 import Image from "next/image"
 interface Props{
+    key:number,
     rowDirect?:string,
     imageSrc:any,
     title:string,

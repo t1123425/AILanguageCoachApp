@@ -9,7 +9,7 @@ export default function QnaPage({
   }) {
 
     return (
-        <section className="container mt-2 mx-auto h-screen bg-white">
+        <>
             {/* <h1>This is {params.mode} page</h1> */}
             <InfoModal title="welcome to AI Language Coach Demo">
               <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
@@ -17,7 +17,7 @@ export default function QnaPage({
               </p>
             </InfoModal>
             <QnAContent questionCounts={5} />
-        </section>
+        </>
         
     )
 }

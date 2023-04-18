@@ -4,7 +4,8 @@ const nextConfig = {
     appDir: true,
   },
   env:{
-    QUESTION_TEMPLATE:process.env.QUESTION_TEMPLATE
+    QUESTION_TEMPLATE:process.env.QUESTION_TEMPLATE,
+    NEXT_REPLY:process.env.NEXT_REPLY
   }
 }
 

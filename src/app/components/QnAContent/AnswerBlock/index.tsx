@@ -16,14 +16,10 @@ const AnswerBlock = ({submitAns,isOkAnswer,className,questionCount}:Props) => {
     const [isFinish,setFinish] = useState(false);
     useEffect(() => {
         if(ansArray.length > 0){
-            let ansQuery = `My Q${ansArray.length} answer is ${ansArray[ansArray.length - 1]}, Please generate the next question that following the previous rules.`
+            const ansReply = `My Q${ansArray.length} answer is ${ansArray[ansArray.length - 1]}`;
+            let ansQuery = `${ansReply}, ${process.env.NEXT_REPLY}`
             if(ansArray.length === questionCount){
-                // let ansOrder = '';
-                // ansArray.forEach((e,i) => {
-                //     ansOrder += `Q${(i+1)}.${e} `
-                // })
                 setFinish(true);
-                ansQuery = `My Q${ansArray.length} answer is ${ansArray[ansArray.length - 1]} , Are the answers to the previous questions correct? Please testify if I am wrong.`
             }
             sendAns(ansQuery)
         }
