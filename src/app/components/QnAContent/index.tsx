@@ -44,7 +44,7 @@ const QnAcontent = ({questionCounts,lang,level}:Props) => {
             if (response.status !== 200) {
                 throw res.error || new Error(`Request failed with status ${response.status}`);
             }
-            console.log(res);
+            // console.log(res);
             const choicesData = res.data.choices[0];
             const choicesMessage:GPTData = choicesData.message;
             if(choicesData.finish_reason === 'stop'){
@@ -57,10 +57,10 @@ const QnAcontent = ({questionCounts,lang,level}:Props) => {
                 setErrorMsg(error?.message?.message)
             }
             setStatus(qnaStatus => ({...qnaStatus,isError:true,isUpdate:false}))
-            if(error.callback === 're-call'){
-                reUpdate(3000);
-            }
-            
+            // if(error.callback === 're-call'){
+            //     reUpdate(3000);
+            // }
+            reUpdate(3000);
         }
     }
 
