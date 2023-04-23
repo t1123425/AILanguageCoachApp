@@ -1,5 +1,6 @@
 'use client'
 import { useState,useEffect} from "react"
+import { useRouter } from "next/router"
 interface Props{
     submitAns:(ans:string)=> void,
     isOkAnswer:boolean,
@@ -9,10 +10,14 @@ interface Props{
 
 
 const AnswerBlock = ({submitAns,isOkAnswer,className,questionCount}:Props) => {
+    const router = useRouter();
     const selectOptions = ['A','B','C','D'];
     const [ansArray,setAnsArray] = useState<string[]>([]);
     const sendAns = (e:string) => {
         submitAns(e);
+    }
+    const finishHandle = () => {
+        router.push('/setup');
     }
     const [isFinish,setFinish] = useState(false);
     useEffect(() => {
@@ -21,7 +26,7 @@ const AnswerBlock = ({submitAns,isOkAnswer,className,questionCount}:Props) => {
             let ansQuery = `${ansReply}, ${process.env.NEXT_REPLY} ${process.env.GET_NEXT_QUESTION}`
             if(ansArray.length === questionCount){
                 setFinish(true);
-                ansQuery = `${ansReply}, ${process.env.NEXT_REPLY}`
+                ansQuery = `${ansReply}, ${process.env.NEXT_REPLY} and stop generate question.`
             }
             sendAns(ansQuery)
         }
@@ -42,7 +47,7 @@ const AnswerBlock = ({submitAns,isOkAnswer,className,questionCount}:Props) => {
                             </button>
                         )
                     })):(
-                        <button className="w-full rounded-md p-2 text-white bg-blue-500">
+                        <button onClick={finishHandle} className="w-full rounded-md p-2 text-white bg-blue-500">
                             Finished Practice
                         </button>
                     )

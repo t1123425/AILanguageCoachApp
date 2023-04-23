@@ -10,13 +10,14 @@ export default function QnaPage({
     return (
         <>
             {/* <h1>This is {params.mode} page</h1> */}
-            <InfoModal title="welcome to AI Language Coach Demo">
+            <InfoModal title="Welcome to Daily 10 Questions Practice Mode">
               <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                Here we will show the use of chatGPT to generate 5 English fill-in-the-blank questions. 
+              Next, AI coach will generate 10 fill-in-the-blank questions, please complete it.
               </p>
             </InfoModal>
-            <QnAContent questionCounts={5} 
-              level={searchParams.level} />
+            <QnAContent questionCounts={10} 
+              level={searchParams.level}
+              nLang={searchParams.nlang} />
         </>
         
     )

@@ -9,7 +9,7 @@ export const MenuBar = styled.label<MenuProps>`
   position: relative;
   width: ${(props) => (props.size ? props.size : '50px')};
   height: ${(props) => (props.size ? props.size : '50px')};
-  z-index: 3;
+  z-index: 20;
   cursor: pointer;
   &::before,
   &::after {

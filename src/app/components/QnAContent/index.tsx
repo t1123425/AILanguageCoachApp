@@ -8,7 +8,8 @@ interface Props{
     questionTemplate?:string,
     questionCounts:number
     lang?:string | undefined,
-    level:string | undefined
+    level:string | undefined,
+    nLang?:string | undefined,
 }
 interface QnaStatus{
     isLoad:boolean,
@@ -18,7 +19,7 @@ interface QnaStatus{
 
 
 
-const QnAcontent = ({questionCounts,lang,level}:Props) => {
+const QnAcontent = ({questionCounts,nLang,level}:Props) => {
     const qnaRef = useRef<HTMLDivElement>(null);
     const [errorMsg,setErrorMsg] = useState('');
     const [qna,setQna] = useState<GPTData[]>([]);
@@ -65,14 +66,13 @@ const QnAcontent = ({questionCounts,lang,level}:Props) => {
     }
 
     const submitAnswer = (ans:string) => {
+        
         setQna(qna => [...qna,{role:'user',content:ans}]);
-        // setUpdate(true);
         setStatus(qnaStatus => ({...qnaStatus,isUpdate:true}))
     }
     const reUpdate = (delaySec:number) => {
         setTimeout(()=>{
             setStatus(qnaStatus => ({...qnaStatus,isUpdate:true}))
-            // setUpdate(true);
         },delaySec);
     }
     useEffect(()=>{

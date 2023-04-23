@@ -4,23 +4,43 @@ import { useState } from "react";
 import { useRouter} from 'next/navigation';
 const SetupForm = () => {
     const router = useRouter();
+    const languageList = ['English','Chinese','Japanese','Korean','French','Germen','Spanish','Italian','Portuguese','Dutch','Russian']
     const [testSetup,setTest] = useState({
         langauge:'English',
-        level:'A1 ~ A2'
+        level:'A1 ~ A2',
+        nativeLanguage:'English'
     });
     const updateValue = (key:string,value:string) => {
         setTest(testSetup => ({...testSetup,[key]:value}))
     }
     const submitHandle = () => {
-        router.push(`/qna/practice/?lang=${testSetup.langauge}&level=${testSetup.level}`)
+        router.push(`/qna/practice/?nlang=${testSetup.nativeLanguage}&lang=${testSetup.langauge}&level=${testSetup.level}`)
     }
     return (
         <div className="w-full p-2">
             <div className="mb-2">
                 <div className="mb-2 block">
                     <Label
+                    htmlFor="nlang">
+                        Your native Langauge
+                        </Label>
+                </div>
+                <Select
+                id="lang"
+                required={true}
+                defaultValue={testSetup.langauge}
+                onChange={(e)=>{updateValue('nativeLanguage',e.target.value)}}>
+                    {
+                        languageList.map((e,i) => {
+                        return (<option key={i} value={e}>{e}</option>)})
+                    }
+                </Select>
+            </div>
+            <div className="mb-2">
+                <div className="mb-2 block">
+                    <Label
                     htmlFor="lang">
-                        Langauge
+                      Language certification
                     </Label>
                 </div>
                 <Select
@@ -28,7 +48,7 @@ const SetupForm = () => {
                 required={true}
                 defaultValue={testSetup.langauge}
                 onChange={(e)=>{updateValue('language',e.target.value)}}>
-                    <option value="English">English</option>
+                    <option value="English">CEFR (English)</option>
                 </Select>
             </div>
             <div className="mb-2">
@@ -50,7 +70,7 @@ const SetupForm = () => {
             </div>
             <div className="mb-2">
                 <Button type="button" onClick={submitHandle}>
-                    Start Test
+                    Start it
                 </Button>
             </div>
         </div>

@@ -28,7 +28,7 @@ const Header = () => {
                     lg:block
                     lg:static
                     peer-checked:block" />
-                <MenuBar role="button" size="25px" htmlFor="toggle_nav" className="z-20 
+                <MenuBar role="button" size="25px" htmlFor="toggle_nav" className=" 
                     inline-block 
                     lg:hidden
                     peer-checked:after:rotate-[-45deg]
