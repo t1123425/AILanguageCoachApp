@@ -7,6 +7,8 @@ import { Alert, Spinner} from "flowbite-react";
 interface Props{
     questionTemplate?:string,
     questionCounts:number
+    lang?:string | undefined,
+    level:string | undefined
 }
 interface QnaStatus{
     isLoad:boolean,
@@ -16,7 +18,7 @@ interface QnaStatus{
 
 
 
-const QnAcontent = ({questionCounts}:Props) => {
+const QnAcontent = ({questionCounts,lang,level}:Props) => {
     const qnaRef = useRef<HTMLDivElement>(null);
     const [errorMsg,setErrorMsg] = useState('');
     const [qna,setQna] = useState<GPTData[]>([]);
@@ -34,7 +36,8 @@ const QnAcontent = ({questionCounts}:Props) => {
                 headers:{
                     "Content-Type": "application/json",
                 },
-                body:JSON.stringify({qna:qna})
+                body:JSON.stringify({qna:qna,
+                                    level:level})
             })
             
             const res = await response.json();
@@ -54,7 +57,10 @@ const QnAcontent = ({questionCounts}:Props) => {
                 setErrorMsg(error?.message?.message)
             }
             setStatus(qnaStatus => ({...qnaStatus,isError:true,isUpdate:false}))
-            reUpdate(3000);
+            if(error.callback === 're-call'){
+                reUpdate(3000);
+            }
+            
         }
     }
 

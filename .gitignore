@@ -27,7 +27,20 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
+#question tempalte
+/quizTemplate
+#backStage
+/prisma
+/src/app/actions
+/src/app/api/register
+/src/app/libs
+/src/app/register
+/src/app/components/Login
+/src/app/components/RegisterForm
+/src/app/admin
+/src/pages
 # vercel
 .vercel
 

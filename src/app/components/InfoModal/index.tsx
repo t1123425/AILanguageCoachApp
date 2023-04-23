@@ -1,6 +1,4 @@
-// import { Modal } from "flowbite"
 'use client';
-
 import { Modal , Button} from "flowbite-react";
 import { useState } from 'react';
 interface Props{

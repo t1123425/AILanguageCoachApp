@@ -5,9 +5,8 @@ export default function QnaPage({
     searchParams,
   }: {
     params: { mode: string };
-    searchParams: { [key: string]: string | string[] | undefined };
+    searchParams: { [key: string]: string | undefined };
   }) {
-
     return (
         <>
             {/* <h1>This is {params.mode} page</h1> */}
@@ -16,7 +15,8 @@ export default function QnaPage({
                 Here we will show the use of chatGPT to generate 5 English fill-in-the-blank questions. 
               </p>
             </InfoModal>
-            <QnAContent questionCounts={5} />
+            <QnAContent questionCounts={5} 
+              level={searchParams.level} />
         </>
         
     )

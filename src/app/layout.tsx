@@ -1,10 +1,8 @@
 import './globals.css'
-import Header from './components/Header'
 import Footer from './components/Footer'
-import StyledComponentsRegistry from './styleRegistry'
 export const metadata = {
   title: 'AILanguageCoach',
-  description: 'Test Your Language ability!',
+  description: 'Let AI help you practice your language',
 }
 
 export default function RootLayout({
@@ -14,11 +12,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='bg-white-500 h-screen'>
-        <StyledComponentsRegistry>
-            <Header />
-            {children}
-        </StyledComponentsRegistry>
+      <body className='h-screen'>
+        {children}
         <Footer />
       </body>
     </html>
