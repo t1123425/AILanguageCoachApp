@@ -22,6 +22,7 @@ interface QnaStatus{
 const QnAcontent = ({questionCounts,nLang,level}:Props) => {
     const qnaRef = useRef<HTMLDivElement>(null);
     const [errorMsg,setErrorMsg] = useState('');
+    const [ansCount,setAnsCount] = useState(0);
     const [qna,setQna] = useState<GPTData[]>([]);
     const [qnaStatus,setStatus] = useState<QnaStatus>({
         isLoad:false,
@@ -38,7 +39,9 @@ const QnAcontent = ({questionCounts,nLang,level}:Props) => {
                     "Content-Type": "application/json",
                 },
                 body:JSON.stringify({qna:qna,
-                                    level:level})
+                                    level:level,
+                                    nLang:nLang,
+                                    ansCount:ansCount})
             })
             
             const res = await response.json();
@@ -58,15 +61,12 @@ const QnAcontent = ({questionCounts,nLang,level}:Props) => {
                 setErrorMsg(error?.message?.message)
             }
             setStatus(qnaStatus => ({...qnaStatus,isError:true,isUpdate:false}))
-            // if(error.callback === 're-call'){
-            //     reUpdate(3000);
-            // }
             reUpdate(3000);
         }
     }
 
-    const submitAnswer = (ans:string) => {
-        
+    const submitAnswer = (ans:string,ansCounts:number) => {
+        setAnsCount(ansCounts);
         setQna(qna => [...qna,{role:'user',content:ans}]);
         setStatus(qnaStatus => ({...qnaStatus,isUpdate:true}))
     }
@@ -104,7 +104,7 @@ const QnAcontent = ({questionCounts,nLang,level}:Props) => {
             {
                 qnaStatus.isError && <Alert color="failure" rounded={true}><span className="font-bold mr-3">Error</span>{errorMsg}</Alert>
             }
-            <AnswerBlock questionCount={questionCounts} isOkAnswer={!qnaStatus.isLoad && !qnaStatus.isError && !qnaStatus.isUpdate} submitAns={submitAnswer} className="col-span-1 row-end-end-1-1" />
+            <AnswerBlock questionCount={5} isOkAnswer={!qnaStatus.isLoad && !qnaStatus.isError && !qnaStatus.isUpdate} submitAns={submitAnswer} className="col-span-1 row-end-end-1-1" />
         </div>
     )
 }

@@ -10,9 +10,9 @@ export default function QnaPage({
     return (
         <>
             {/* <h1>This is {params.mode} page</h1> */}
-            <InfoModal title="Welcome to Daily 10 Questions Practice Mode">
+            <InfoModal title="Welcome to Daily 5 Questions Practice Mode">
               <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              Next, AI coach will generate 10 fill-in-the-blank questions, please complete it.
+              Next, AI coach will generate 5 fill-in-the-blank questions, please complete it.
               </p>
             </InfoModal>
             <QnAContent questionCounts={10} 

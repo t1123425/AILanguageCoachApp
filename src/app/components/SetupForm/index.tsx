@@ -22,7 +22,7 @@ const SetupForm = () => {
                 <div className="mb-2 block">
                     <Label
                     htmlFor="nlang">
-                        Your native Langauge
+                        Your native Langauge (to explain the answer)
                         </Label>
                 </div>
                 <Select
