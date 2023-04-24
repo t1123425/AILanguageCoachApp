@@ -32,7 +32,7 @@ export default function FAQPage(){
                 </h3>
                 <p>
                     I will announce the progress and news of the current project on <Link href="https://twitter.com/TheLabOfTYLife" className=" underline font-bold underline-offset-8 text-blue-600" target="_blank">my Twitter</Link>. 
-                    In addition, the function update will determine the next development plan according to various <Link href={'https://forms.gle/CkDNY9YovLqarNnv8'} target="_blank" className=" underline font-bold underline-offset-8 text-blue-600">feedbacks</Link> on the progress.
+                    In addition, the function update will determine the next development plan according to various <Link href={'https://tlcr8p8abmb.typeform.com/to/h9RRc8eU'} target="_blank" className=" underline font-bold underline-offset-8 text-blue-600">feedbacks</Link> on the progress.
                 </p>
             </div>
         </section>
