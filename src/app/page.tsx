@@ -1,7 +1,7 @@
 import Image from "next/image"
 import learningImg from '../assets/img/learning.jpg'
-import AIimg from '../assets/img/ai_knowledge2.svg'
-import qnaimg from '../assets/img/web_qna.svg'
+import Dialogue from '../assets/img/dialogue.svg'
+import Specialization from '../assets/img/specialization.svg'
 import InfoBlock from "./components/InfoBlock"
 import Link from "next/link"
 import ClientView from "./components/ClientView"
@@ -10,16 +10,16 @@ export default function Home() {
   const infos = [
     {
       id:1,
-      title:'Language Proficiency Assessment:',
-      content:'Let the AI language coach help you evaluate your language ability and provide improvement plan.',
-      imageSrc:AIimg,
+      title:'Customized Practice Mode:',
+      content:'You can choose different language certification levels to do exercises and provide explanations in your native language.',
+      imageSrc:Specialization,
       rowDirect:'lg:flex-row'
     },
     {
       id:2,
       title:'Various situational dialogue exercises:',
       content:'Provide situational dialogues including daily life, business, travel, social interaction, etc.',
-      imageSrc:qnaimg,
+      imageSrc:Dialogue,
       rowDirect:'lg:flex-row-reverse'
     }
   ]

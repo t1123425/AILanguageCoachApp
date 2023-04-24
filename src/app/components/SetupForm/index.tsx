@@ -17,7 +17,7 @@ const SetupForm = () => {
         router.push(`/qna/practice/?nlang=${testSetup.nativeLanguage}&lang=${testSetup.langauge}&level=${testSetup.level}`)
     }
     return (
-        <div className="w-full p-2">
+        <div className="w-full">
             <div className="mb-2">
                 <div className="mb-2 block">
                     <Label
