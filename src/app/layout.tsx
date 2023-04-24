@@ -2,7 +2,17 @@ import './globals.css'
 import Footer from './components/Footer'
 export const metadata = {
   title: 'AILanguageCoach',
-  description: 'Let AI help you practice your language',
+  authors: [{ name: 'Tom Yuan', url: 'https://t1123425.github.io/my-portfolio/' }],
+  keywords: ['AI', 'Language learing', 'chatGPT','AILanguageCoach'],
+  description: 'Let AI help you practice your language!',
+  openGraph: {
+    title: 'AILanguageCoach',
+    description: 'Let AI help you practice your language!',
+    url: 'https://ai-language-coach-app.vercel.app/',
+    siteName: 'AILanguageCoach',
+    locale: 'en-US',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({
