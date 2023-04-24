@@ -1,5 +1,5 @@
 import ClientView from "@/app/components/ClientView"
-export default function AboutLayout({
+export default function FAQLayout({
     children,
   }: {
     children: React.ReactNode
@@ -7,7 +7,7 @@ export default function AboutLayout({
     return (
         <ClientView>
             <main className='w-full h-full' >
-                <section className="container mx-auto h-full">
+                <section className="container mx-auto h-full px-2">
                     {children}
                 </section>
             </main>

@@ -11,8 +11,8 @@ const Header = () => {
         //     url:'/qna/practice'
         // },
         {
-            text:'About',
-            url:'/about'
+            text:'FAQ',
+            url:'/faq'
         },
     ]
     return (

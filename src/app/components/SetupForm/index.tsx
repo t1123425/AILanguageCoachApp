@@ -17,11 +17,12 @@ const SetupForm = () => {
         router.push(`/qna/practice/?nlang=${testSetup.nativeLanguage}&lang=${testSetup.langauge}&level=${testSetup.level}`)
     }
     return (
-        <div className="w-full">
+        <div className="w-full  p-5 border-blue-600 border-2 rounded-lg">
             <div className="mb-2">
                 <div className="mb-2 block">
                     <Label
-                    htmlFor="nlang">
+                    htmlFor="nlang"
+                    className="font-bold">
                         Your native Langauge (to explain the answer)
                         </Label>
                 </div>
@@ -68,7 +69,7 @@ const SetupForm = () => {
                     <option value="C1 ~ C2">C1 ~ C2</option>
                 </Select>
             </div>
-            <div className="mb-2">
+            <div className="mt-5">
                 <Button type="button" onClick={submitHandle}>
                     Start it
                 </Button>
