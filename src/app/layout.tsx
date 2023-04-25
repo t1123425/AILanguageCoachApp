@@ -1,6 +1,6 @@
 import './globals.css'
 import Footer from './components/Footer'
-import { GoogleAnalytics } from 'nextjs-google-analytics'
+import GaBlock from './components/GaBlock'
 export const metadata = {
   title: 'AILanguageCoach',
   authors: [{ name: 'Tom Yuan', url: 'https://t1123425.github.io/my-portfolio/' }],
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className='h-screen'>
-        <GoogleAnalytics trackPageViews gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        <GaBlock/>
         {children}
         <Footer />
       </body>
