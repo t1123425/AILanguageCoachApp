@@ -49,7 +49,7 @@ const SetupForm = () => {
                 required={true}
                 defaultValue={testSetup.langauge}
                 onChange={(e)=>{updateValue('language',e.target.value)}}>
-                    <option value="English">CEFR (English)</option>
+                    <option value="English">English</option>
                 </Select>
             </div>
             <div className="mb-2">
@@ -64,9 +64,9 @@ const SetupForm = () => {
                 required={true}
                 defaultValue={testSetup.level}
                 onChange={(e)=>{updateValue('level',e.target.value)}}>
-                    <option value="A1 ~ A2">A1 ~ A2</option>
-                    <option value="A1 ~ A2">B1 ~ B2</option>
-                    <option value="C1 ~ C2">C1 ~ C2</option>
+                    <option value="A1 ~ A2">Beginner</option>
+                    <option value="B1 ~ B2">Intermediate</option>
+                    <option value="C1 ~ C2">Advanced</option>
                 </Select>
             </div>
             <div className="mt-5">

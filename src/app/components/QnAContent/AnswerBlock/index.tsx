@@ -24,10 +24,8 @@ const AnswerBlock = ({submitAns,isOkAnswer,className,questionCount}:Props) => {
     useEffect(() => {
         if(ansArray.length > 0){
             const ansReply = `My Q${ansArray.length} answer is (${ansArray[ansArray.length - 1]})`;
-            // let ansQuery = `${ansReply}, ${process.env.NEXT_REPLY} ${process.env.GET_NEXT_QUESTION}`
             if(ansArray.length === questionCount){
                 setFinish(true);
-                // ansQuery = `${ansReply}, ${process.env.NEXT_REPLY} and stop generate question.`
             }
             sendAns(ansReply,ansArray.length)
         }
