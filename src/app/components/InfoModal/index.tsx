@@ -2,7 +2,7 @@
 import { Modal , Button} from "flowbite-react";
 import { useState } from 'react';
 interface Props{
-    title:string
+    title:string,
     children:React.ReactNode
 }
 const InfoModal = ({title,children}:Props) =>  {

@@ -1,9 +1,11 @@
-import { LinksData } from "@/global"
+import { LinksData, SafeUser } from "@/global"
 import NavBar from "../Navbar"
 import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons"
 import { MenuBar } from "../Navbar/style"
+import { store } from "@/store"
+
 const Header = () => {
     const navLinks:LinksData[] = [
         // {
@@ -23,7 +25,7 @@ const Header = () => {
                     <FontAwesomeIcon icon={faDumbbell} width={20} />
                     <span className="ml-2">AILanguageCoach</span>
                 </Link>
-                <NavBar links={navLinks} className="z-20 
+                <NavBar links={navLinks} userName={store.getState().user.currentUser?.name} className="z-20 
                     hidden  
                     lg:block
                     lg:static

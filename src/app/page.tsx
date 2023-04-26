@@ -5,8 +5,15 @@ import Specialization from '../assets/img/specialization.svg'
 import InfoBlock from "./components/InfoBlock"
 import Link from "next/link"
 import ClientView from "./components/ClientView"
-
-export default function Home() {
+import { store } from '@/store'
+import { setUser } from "@/store/userSlice";
+import getCurrentUser from './actions/getCurrentUser'
+import SignInModal from "./components/SignInModal"
+export default async function Home() {
+  const userdata = await getCurrentUser();
+  if(userdata){
+      store.dispatch(setUser(userdata));
+  }
   const infos = [
     {
       id:1,
@@ -23,6 +30,7 @@ export default function Home() {
       rowDirect:'lg:flex-row-reverse'
     }
   ]
+    
   return (
     <ClientView>
         <main className="w-full bg-white-500">
@@ -39,9 +47,14 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="text-center lg:text-left">
-                    <Link href={'/setup'} className="w-32 font-bold text-center px-4 py-2 inline-block rounded-lg text-white bg-blue-400 transition-transform hover:scale-110">
+                    {
+                      userdata?
+                      <Link href={'/setup'} className="w-32 font-bold text-center px-4 py-2 
+                      inline-block rounded-lg text-white bg-blue-400 transition-transform hover:scale-110">
                         Get started
-                    </Link>
+                      </Link>:<SignInModal />
+                    }
+
                   </div>
               </div>
               <div className="h-full flex flex-col drop-shadow-lg lg:w-1/2">

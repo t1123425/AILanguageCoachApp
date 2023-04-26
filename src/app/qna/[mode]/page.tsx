@@ -1,5 +1,7 @@
 import QnAContent from "@/app/components/QnAContent"
 import InfoModal from "@/app/components/InfoModal";
+import { store } from "@/store"
+import { redirect } from "next/navigation"
 export default function QnaPage({
     params,
     searchParams,
@@ -7,7 +9,11 @@ export default function QnaPage({
     params: { mode: string };
     searchParams: { [key: string]: string | undefined };
   }) {
+    if(!store.getState().user.currentUser && !searchParams){
+      redirect('/')
+    }
     return (
+        
         <>
             <InfoModal title="Welcome to the AI Langage Coach Demo">
               <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
