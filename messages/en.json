@@ -1,0 +1,62 @@
+{
+    "Meta":{
+        "title":"AILangaugeCoach",
+        "description":"When learning a language but not sure where to find effective practice and proficiency tests? AI language coach can help you solve these problems and improve learning efficiency."
+    },
+    "Index":{
+        "title":"Let AI help you practice your Language!!",
+        "description":"When learning a language but not sure where to find effective practice and proficiency tests? AI language coach can help you solve these problems and improve learning efficiency.",
+        "introTitle":"Here are a few ways AI Language Coach can help",
+        "getStart":"Get started"
+    },
+    "introduction1":{
+        "title":"Customized Practice Mode",
+        "description":"You can choose different language certification levels to do exercises and provide explanations in your native language."
+    },
+    "introduction2":{
+        "title":"Various situational dialogue exercises",
+        "description":"Provide situational dialogues including daily life, business, travel, social interaction, etc."
+    },
+    "setup":{
+        "title":"Setup your language test",
+        "nlangLabel":"Your native Langauge (to explain the answer)",
+        "langTestLabel":"Language certification",
+        "levelLabel":"Level",
+        "Beginner":"Beginner",
+        "Intermediate":"Intermediate",
+        "Advanced":"Advanced"
+
+    },
+    "ansBlock":{
+        "title":"Select your Answer",
+        "title2":"Thank for yout answer",
+        "finishInfo":"Finished Practice",
+        "feedback":"Get me some feedback"
+    },
+    "ansModal":{
+        "title":"Welcome to practice area",
+        "description":"Hi, I am your AI language coach.Next, I will generate fill-in-the-blank language exercises according to your settings. I will help you answer and explain each question, so let’s start when you are ready."
+    },
+    "FAQ":{
+        "title":"FAQ",
+        "description":" Frequently Asked Questions"
+    },
+    "FAQInfo1":{
+        "title":"What is AI Language Coach?",
+        "description":"AI Language Coach is a web application combined with chatGPT. We simplify the mode of communicating with AI and provide a variety of language exercises to help you learn languages with less effort."
+    },
+    "FAQInfo2":{
+        "title":"Who is AI Language Coach for?",
+        "description":"At present, it is mainly provided for those who have basic language skills but want to improve in the future and prepare to obtain relevant language certificates."
+    },
+    "FAQInfo3":{
+        "title":"What's next for AI language coach?",
+        "description":"Project news can be obtained through the following social platforms"
+    },
+    "other":{
+      "begin":"Begin",
+      "signIn":"SignIn",
+      "signOut":"SignOut",
+      "loginByGoogle":"Please log in with google account"
+    }
+}

@@ -1,0 +1,62 @@
+{
+    "Meta":{
+        "title":"AI語言教練",
+        "description":"當學習一個語言但不確定要如何尋找有效的練習與能力驗證嗎? AI 語言教練可以幫你來解決這些問題，提升學習效率。"
+    },
+    "Index":{
+        "title":"讓AI來幫助你練習語言!!",
+        "description":"當學習一個語言但不確定要如何尋找有效的練習與能力驗證嗎? AI 語言教練可以幫你來解決這些問題，提升學習效率。",
+        "introTitle":"這裡有幾個幫助AI語言教練能幫助的方法",
+        "getStart":"開始練習吧"
+    },
+    "introduction1":{
+        "title":"客製化練習模式",
+        "description":"可選擇不同的語言認證等級來做練習並根據自身母語提供講解。"
+    },
+    "introduction2":{
+        "title":"多樣的情境對話練習",
+        "description":"提供包括日常生活、商業、旅遊、社交等等情境對話。"
+    },
+    "setup":{
+        "title":"來設置你的語言測驗吧",
+        "nlangLabel":"請選擇你的母語",
+        "langTestLabel":"語言認證",
+        "levelLabel":"等級",
+        "Beginner":"初級",
+        "Intermediate":"中級",
+        "Advanced":"高級"
+
+    },
+    "ansBlock":{
+        "title":"請選擇你的答案",
+        "title2":"感謝您的作答",
+        "finishInfo":"練習完畢",
+        "feedback":"請給我回饋"
+    },
+    "ansModal":{
+        "title":"歡迎來到練習區",
+        "description":"你好，我是你的AI語言教練。接下來，我會根據你的設置生成填空語言練習。我會幫你回答和解釋每一個問題，所以當你準備好了就開始吧。"
+    },
+    "FAQ":{
+        "title":"常見問題",
+        "description":"常見問題與解答"
+    },
+    "FAQInfo1":{
+        "title":"什麼是AI語言教練?",
+        "description":"AI 語言教練是一款結合了 chatGPT 的網絡應用程序，我們透過簡化與ai溝通的模式，並提供多樣化的語文練習，幫助您在學習語言上能夠事半功倍。"
+    },
+    "FAQInfo2":{
+        "title":"AI語言教練是提供給誰?",
+        "description":"目前主要是提供給有基礎語言能力但未來想要提升並且準備考取相關語文證照的使用者。"
+    },
+    "FAQInfo3":{
+        "title":"AI語言教練的下一步是什麼?",
+        "description":"項目消息可通過下面社交平台獲取"
+    },
+    "other":{
+      "begin":"開始",
+      "signIn":"登入",
+      "signOut":"登出",
+      "loginByGoogle":"請使用Google帳號登入"
+    }
+}

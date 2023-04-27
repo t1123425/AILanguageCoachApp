@@ -10,6 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.2.32",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
@@ -28,6 +29,7 @@
     "flowbite-react": "^0.4.3",
     "next": "13.2.4",
     "next-auth": "^4.22.1",
+    "next-intl": "^2.14.0-beta.2",
     "nextjs-google-analytics": "^2.3.3",
     "openai": "^3.2.1",
     "react": "18.2.0",

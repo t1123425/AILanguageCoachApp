@@ -1,18 +1,16 @@
 import StyledComponentsRegistry from "@/app/styleRegistry";
 import Header from "../Header";
-// import getCurrentUser from "@/app/actions/getCurrentUser";
-// import { store } from "@/store";
-// import { setUser } from "@/store/userSlice";
+import { SafeUser } from "@/global";
+import { store } from "@/store";
+import { setUser } from "@/store/userSlice";
 interface Props{
-    children:React.ReactNode
+    children:React.ReactNode,
+    userData?:SafeUser | null
 }
-const ClientView = async ({children}:Props) => {
-    // const userdata = await getCurrentUser();
-    // if(userdata){
-    //     console.log('run redux');
-    //     store.dispatch(setUser(userdata));
-    // }
-
+const ClientView = ({children, userData}:Props) => {
+    if(userData){
+        store.dispatch(setUser(userData))
+    }
     return (
         <StyledComponentsRegistry>
             <Header />
@@ -21,4 +19,5 @@ const ClientView = async ({children}:Props) => {
     )
 }
 
-export default ClientView as unknown as ({children}:Props) => JSX.Element;
+// export default ClientView as unknown as ({children}:Props) => JSX.Element;
+export default ClientView;

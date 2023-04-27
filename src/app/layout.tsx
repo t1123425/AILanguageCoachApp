@@ -16,16 +16,11 @@ export const metadata = {
   },
 }
 
-export default  function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  // const userdata = await getCurrentUser();
-  //   if(userdata){
-  //       // console.log('run redux');
-  //       store.dispatch(setUser(userdata));
-  //   }
   return (
     <html lang="en">
       <body className='h-screen'>

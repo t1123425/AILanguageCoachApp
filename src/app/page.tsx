@@ -5,15 +5,10 @@ import Specialization from '../assets/img/specialization.svg'
 import InfoBlock from "./components/InfoBlock"
 import Link from "next/link"
 import ClientView from "./components/ClientView"
-import { store } from '@/store'
-import { setUser } from "@/store/userSlice";
-import getCurrentUser from './actions/getCurrentUser'
 import SignInModal from "./components/SignInModal"
+import getCurrentUser from "./actions/getCurrentUser"
 export default async function Home() {
-  const userdata = await getCurrentUser();
-  if(userdata){
-      store.dispatch(setUser(userdata));
-  }
+  const usedata = await getCurrentUser();
   const infos = [
     {
       id:1,
@@ -32,7 +27,7 @@ export default async function Home() {
   ]
     
   return (
-    <ClientView>
+    <ClientView userData={usedata}>
         <main className="w-full bg-white-500">
           <section className="container flex flex-col mx-auto max-w-6xl max-[1200px]:px-3 pt-32 xl:pt-36">
             <div className="flex flex-wrap flex-col lg:flex-row">
@@ -48,7 +43,7 @@ export default async function Home() {
                   </div>
                   <div className="text-center lg:text-left">
                     {
-                      userdata?
+                      usedata?
                       <Link href={'/setup'} className="w-32 font-bold text-center px-4 py-2 
                       inline-block rounded-lg text-white bg-blue-400 transition-transform hover:scale-110">
                         Get started

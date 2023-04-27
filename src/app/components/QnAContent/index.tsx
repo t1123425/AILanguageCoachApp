@@ -6,7 +6,6 @@ import QnABlock from "./QnABlock";
 import { Alert, Spinner} from "flowbite-react";
 interface Props{
     questionTemplate?:string,
-    questionCounts:number
     lang?:string | undefined,
     level:string | undefined,
     nLang?:string | undefined,
@@ -19,7 +18,7 @@ interface QnaStatus{
 
 
 
-const QnAcontent = ({questionCounts,nLang,level}:Props) => {
+const QnAcontent = ({nLang,level}:Props) => {
     const qnaRef = useRef<HTMLDivElement>(null);
     const [errorMsg,setErrorMsg] = useState('');
     const [ansCount,setAnsCount] = useState(0);
