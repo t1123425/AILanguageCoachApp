@@ -1,8 +1,14 @@
-import { GPTData } from "@/global"
-const QnABlock = ({role,content}:GPTData) => {
+// import { GPTData } from "@/global"
+
+interface QnaProps{
+    children:React.ReactNode
+}
+const QnABlock = ({children}:QnaProps) => {
+
     return (
-        <div className={'p-2 rounded-md my-2 text-white '+(role !== 'user'?'bg-blue-700':'bg-gray-500')}>
-            <p className="m-0">
+        <div className={'my-2 text-white'}>
+            {children}
+            {/* <p className="m-0">
                 {
                     content.split('\n').map((item,i) => {
                         return (
@@ -14,7 +20,7 @@ const QnABlock = ({role,content}:GPTData) => {
                         )
                      })
                 }
-            </p>
+            </p> */}
         </div>
     )
 }

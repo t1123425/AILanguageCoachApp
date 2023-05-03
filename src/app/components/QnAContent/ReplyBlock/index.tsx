@@ -1,7 +1,6 @@
 'use client'
 import { useState,useEffect} from "react"
 import { useRouter } from "next/navigation"
-import Link from "next/link"
 interface Props{
     submitAns:(ans:string,ansCounts:number)=> void,
     isOkAnswer:boolean,
@@ -10,7 +9,7 @@ interface Props{
 }
 
 
-const AnswerBlock = ({submitAns,isOkAnswer,className,questionCount}:Props) => {
+const ReplyBlock = ({submitAns,isOkAnswer,className,questionCount}:Props) => {
     const router = useRouter();
     const selectOptions = ['A','B','C','D'];
     const [ansArray,setAnsArray] = useState<string[]>([]);
@@ -50,9 +49,6 @@ const AnswerBlock = ({submitAns,isOkAnswer,className,questionCount}:Props) => {
                             <button onClick={finishHandle} className="w-1/3 rounded-md p-2 text-white bg-blue-500">
                                 Finished Practice
                             </button>
-                            <Link href={'https://tlcr8p8abmb.typeform.com/to/h9RRc8eU'} className="w-1/3 text-center rounded-md p-2 text-white bg-green-400" target="_blank">
-                               Get me some feedback
-                            </Link>
                         </>
                         
                     )
@@ -62,4 +58,4 @@ const AnswerBlock = ({submitAns,isOkAnswer,className,questionCount}:Props) => {
     )
 }
 
-export default AnswerBlock;
+export default ReplyBlock;

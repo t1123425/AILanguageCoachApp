@@ -14,6 +14,7 @@ export interface GPTData{
      * then ai role will be 'assistant'
      * user role will be 'user'
      */
+    id?:number,
     role:string,
     content:string
 }

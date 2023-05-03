@@ -1,10 +1,12 @@
 import {configureStore} from '@reduxjs/toolkit';
 
 import userReducer from './userSlice';
+import qnaReducer from './qnaSlice';
 
 export const store = configureStore({
     reducer:{
-        user:userReducer
+        user:userReducer,
+        qna:qnaReducer
     }
 })
 
