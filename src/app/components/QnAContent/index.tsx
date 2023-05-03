@@ -7,7 +7,7 @@ import QuizBlock from "./QuizBlock";
 import AnsBlock from "./AnsBlock";
 import { useDispatch,useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux/es/types";
-import { addQuiz} from "@/store/qnaSlice";
+import { addQuiz ,initQuiz} from "@/store/qnaSlice";
 import { RootState, AppDispatch } from "@/store";
 import { Alert, Spinner , Modal} from "flowbite-react";
 interface Props{
@@ -29,6 +29,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 const QnAcontent = ({nLang,level,qCounts}:Props) => {
     const dispatch = useAppDispatch();
     const qnaRef = useRef<HTMLDivElement>(null);
+    const initRef = useRef(true);
     const [errorMsg,setErrorMsg] = useState('');
     const [ansCount,setAnsCount] = useState(0);
     const [qna,setQna] = useState<GPTData[]>([]);
@@ -125,7 +126,10 @@ const QnAcontent = ({nLang,level,qCounts}:Props) => {
             // console.log('run scroll');
             qnaRef.current.scrollIntoView({behavior: 'smooth' });
         }
-        
+        if(initRef.current){
+            dispatch(initQuiz())
+            initRef.current = false;
+        }
         
     },[qnaStatus.isUpdate])
     const renderQnaBlock = (e:GPTData) => {

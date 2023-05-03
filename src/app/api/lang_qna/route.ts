@@ -9,7 +9,7 @@ const openai = new OpenAIApi(apiConfirm);
 const handleUserReply = (qnaArray:GPTData[],nLang:string,ansCount:number,questionCount:number) => {
     const callbackQna = qnaArray.map((e,i) => {
         if(e.role === 'user' && i === qnaArray.length - 1){
-            let content = `${e.content} and please replay by json like: {
+            let content = `${e.content} and please reply by json like: {
                 "isCorrect": (to reply the previous is correct or not yes is true , no is false),
                 "explain": (use ${nLang} to reply),
                 "question": (next question is here )  
@@ -17,7 +17,7 @@ const handleUserReply = (qnaArray:GPTData[],nLang:string,ansCount:number,questio
             // let userReply = {role:'user',content:e.content+`${process.env.NEXT_REPLY}(use ${nLang} to reply) ${process.env.GET_NEXT_QUESTION}`}
             let userReply = {role:'user',content:content}
             if(ansCount === questionCount){
-                content = `${e.content} and please replay by json like (stop generate question): {
+                content = `${e.content} and please reply by json like: {
                     "isCorrect": (true or false),
                     "explain": (use ${nLang} to reply)
                 }`

@@ -18,35 +18,24 @@ interface quizData{
     questions:QuizType | string
 }
 interface quizState{
-    quizs:quizData[],
-    explainPopupToggle:boolean
+    quizs:quizData[]
 }
 const initialState:quizState = {
     quizs:[],
-    explainPopupToggle:false
 };
 
 export const qnaSlice = createSlice({
     name:'QnaSlice',
     initialState,
     reducers:{
-        // updateQuizs:(state,action:PayloadAction<quizData>) => {
-        //     state.quizs = state.quizs.map(e => {
-        //         if(action.payload.id === e.id){
-        //             return {...e,isCorrect:action.payload.isCorrect,explain:action.payload.explain}
-        //         }else{
-        //             return e
-        //         }
-        //     });
-        // },
+        initQuiz:(state,action:PayloadAction) => {
+            state.quizs = [];
+        },
         addQuiz:(state,action:PayloadAction<quizData>) => {
             state.quizs = [...state.quizs,action.payload];
-        },
-        popUpToggle:(state) => {
-            state.explainPopupToggle = !state.explainPopupToggle;
         }
     }
 })
 
-export const {addQuiz,popUpToggle} = qnaSlice.actions;
+export const {addQuiz,initQuiz} = qnaSlice.actions;
 export default qnaSlice.reducer;   

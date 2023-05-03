@@ -1,7 +1,7 @@
 'use client'
-import { useMemo,useRef,useState} from "react"
+import { useMemo,useRef,useState,useEffect} from "react"
 import { Button } from "flowbite-react"
-import { useAppSelector } from ".."
+import { useAppSelector} from ".."
 interface AnsBlockProps{
     content:string,
     ansIndex:number,
