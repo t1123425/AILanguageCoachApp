@@ -6,7 +6,7 @@ export default async function FAQPage(){
     return (
         <ClientView userData={userdata}>
             <main className='w-full h-full' >
-                <section className="container flex flex-col mx-auto max-w-6xl pt-40 xl:pt-36">
+                <section className="container flex flex-col mx-auto max-w-6xl py-40 xl:py-36">
                     <div className="text-center mb-12">
                         <h1 className="text-5xl font-black text-blue-500">
                             FAQ
