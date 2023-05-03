@@ -5,7 +5,7 @@ export default async function FAQPage(){
     const userdata = await getCurrentUser();
     return (
         <ClientView userData={userdata}>
-            <main className='w-full h-full' >
+            <main className='w-full' >
                 <section className="container flex flex-col mx-auto max-w-6xl py-40 xl:py-36">
                     <div className="text-center mb-12">
                         <h1 className="text-5xl font-black text-blue-500">
