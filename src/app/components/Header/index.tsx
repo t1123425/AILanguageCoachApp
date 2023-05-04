@@ -4,9 +4,10 @@ import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons"
 import { MenuBar } from "../Navbar/style"
-import { store } from "@/store"
-
-const Header = () => {
+// import { store } from "@/store"
+import getCurrentUser from "@/app/actions/getCurrentUser"
+const Header = async () => {
+    const usedata = await getCurrentUser();
     const navLinks:LinksData[] = [
         // {
         //     text:'Practice',
@@ -25,7 +26,7 @@ const Header = () => {
                     <FontAwesomeIcon icon={faDumbbell} width={20} />
                     <span className="ml-2">AILanguageCoach</span>
                 </Link>
-                <NavBar links={navLinks} userName={store.getState().user.currentUser?.name} className="z-20 
+                <NavBar links={navLinks}  userName={usedata?.name} className="z-20 
                     hidden  
                     lg:block
                     lg:static
@@ -53,4 +54,4 @@ const Header = () => {
     )
 }
 
-export default Header;
+export default Header as unknown as () => JSX.Element;

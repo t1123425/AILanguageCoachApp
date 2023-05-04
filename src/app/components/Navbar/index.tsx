@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser,faPersonRunning} from "@fortawesome/free-solid-svg-icons"
 import { Dropdown } from "flowbite-react"
 import { signOut } from "next-auth/react"
-import { useAppDispatch } from "../QnAContent"
-import { initUser } from "@/store/userSlice"
 
 interface Props{
     links:LinksData[],
@@ -14,10 +12,8 @@ interface Props{
     userName?:string | null
 }
 const NavBar = ({links,className,userName}:Props) => {
-    const dispatch = useAppDispatch();
     const SignOut = () => {
         signOut()
-        dispatch(initUser());
     }
     return (
         <div className={className}>
