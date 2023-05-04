@@ -3,6 +3,7 @@ import Header from "../Header";
 import { SafeUser } from "@/global";
 import { store } from "@/store";
 import { setUser } from "@/store/userSlice";
+import Providers from "../Provider";
 interface Props{
     children:React.ReactNode,
     userData?:SafeUser | null
@@ -12,10 +13,13 @@ const ClientView = ({children, userData}:Props) => {
         store.dispatch(setUser(userData))
     }
     return (
-        <StyledComponentsRegistry>
-            <Header />
-            {children}
-        </StyledComponentsRegistry>
+        <Providers>
+             <StyledComponentsRegistry>
+                <Header />
+                {children}
+            </StyledComponentsRegistry>
+        </Providers>
+       
     )
 }
 

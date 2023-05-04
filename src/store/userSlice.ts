@@ -15,9 +15,12 @@ const userSlice = createSlice({
     reducers:{
         setUser: (state,action:PayloadAction<SafeUser>) => {
             state.currentUser = action.payload
+        },
+        initUser: (state) => {
+            state.currentUser = null;
         }
     }
 })
 
-export const {setUser} = userSlice.actions;
+export const {setUser,initUser} = userSlice.actions;
 export default userSlice.reducer;

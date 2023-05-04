@@ -11,15 +11,15 @@ const handleUserReply = (qnaArray:GPTData[],nLang:string,ansCount:number,questio
         if(e.role === 'user' && i === qnaArray.length - 1){
             let content = `${e.content} and please reply by json like: {
                 "isCorrect": (to reply the previous is correct or not yes is true , no is false),
-                "explain": (use ${nLang} to reply),
+                "explain": (please explain the previous question in ${nLang}),
                 "question": (next question is here )  
             }`
             // let userReply = {role:'user',content:e.content+`${process.env.NEXT_REPLY}(use ${nLang} to reply) ${process.env.GET_NEXT_QUESTION}`}
             let userReply = {role:'user',content:content}
             if(ansCount === questionCount){
-                content = `${e.content} and please reply by json like: {
+                content = `${e.content} and please reply the last json like: {
                     "isCorrect": (true or false),
-                    "explain": (use ${nLang} to reply)
+                    "explain": (please explain the previous question in ${nLang})
                 }`
                 userReply.content = content
                 // userReply = {role:'user',content:e.content+`${process.env.NEXT_REPLY}(use ${nLang} to reply) and stop generate question.`}
