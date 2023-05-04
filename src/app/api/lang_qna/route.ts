@@ -9,20 +9,18 @@ const openai = new OpenAIApi(apiConfirm);
 const handleUserReply = (qnaArray:GPTData[],nLang:string,ansCount:number,questionCount:number) => {
     const callbackQna = qnaArray.map((e,i) => {
         if(e.role === 'user' && i === qnaArray.length - 1){
-            let content = `${e.content} and please reply by json like: {
-                "isCorrect": (to reply the previous is correct or not yes is true , no is false),
-                "explain": (please explain the previous question in ${nLang}),
-                "question": (next question is here )  
-            }`
-            // let userReply = {role:'user',content:e.content+`${process.env.NEXT_REPLY}(use ${nLang} to reply) ${process.env.GET_NEXT_QUESTION}`}
-            let userReply = {role:'user',content:content}
-            if(ansCount === questionCount){
-                content = `${e.content} and please reply the last json like: {
-                    "isCorrect": (true or false),
-                    "explain": (please explain the previous question in ${nLang})
+            let userReply = {role:'user',content:``}
+            if(ansCount < questionCount){
+                userReply.content = `${e.content}, Please refer to the following json for the reply format:{
+                    "isCorrect": (to reply the previous is correct or not yes is true , no is false),
+                    "explain": (use ${nLang} to explain),
+                    "question": (next question is here )  
                 }`
-                userReply.content = content
-                // userReply = {role:'user',content:e.content+`${process.env.NEXT_REPLY}(use ${nLang} to reply) and stop generate question.`}
+            }else{
+                userReply.content = `${e.content} Please refer to the following json for the reply format:{
+                    "isCorrect": (true or false),
+                    "explain": (use ${nLang} to explain)
+                }`
             }
             return userReply
         }else{
