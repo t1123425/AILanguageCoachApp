@@ -24,7 +24,7 @@ const Header = async () => {
                 <input type="checkbox" name="toggle_nav" id="toggle_nav" className="peer hidden" />
                 <Link href={'/'} className="font-bold flex items-center z-20 transition-colors peer-checked:text-white">
                     <FontAwesomeIcon icon={faDumbbell} width={20} />
-                    <span className="ml-2">AILanguageCoach</span>
+                    <span className="ml-2 text-sm lg:text-lg">AILanguageCoach(Beta 1.5)</span>
                 </Link>
                 <NavBar links={navLinks}  userName={usedata?.name} className="z-20 
                     hidden  
